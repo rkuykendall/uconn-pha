@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <include android:id="@+id/wellness_activity_header_create_entry" layout="@layout/section_header" />
+    <include android:id="@+id/wellness_activity_header_add_button" layout="@layout/list_item_button" />
+    <include android:id="@+id/wellness_activity_header_create_report" layout="@layout/section_header" />
+    <include android:id="@+id/wellness_activity_header_generate_button" layout="@layout/list_item_button" />
+    <include android:id="@+id/wellness_activity_header_diary_entries" layout="@layout/section_header" />
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_allergy">Add Allergy</string>
+    <string name="add_new_dots">Add New...</string>
+    <string name="add_otc_drug">Add Over the Counter Drug</string>
+    <string name="add_prescription_drug">Add Prescription Drug</string>
+    <string name="alarms">Alarms</string>
+    <string name="allergies">Allergies</string>
+    <string name="app_abbr_caps">PHA</string>
+    <string name="app_name">Personal Health Assistant</string>
+    <string name="app_version">Version 0.4</string>
+    <string name="appetite">Appetite</string>
+    <string name="appetite_required">Please select an appetite level</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="blood_type">Blood Type</string>
+    <string name="cancel">Cancel</string>
+    <string name="categories">Categories</string>
+    <string name="comfort">Comfort</string>
+    <string name="comfort_required">Please select a comfort level</string>
+    <string name="create_alarm">Create Alarm</string>
+    <string name="create_entry">Create Entry</string>
+    <string name="create_report">Create Report</string>
+    <string name="date_discontinued">Date Discontinued</string>
+    <string name="date_started">Date Started</string>
+    <string name="delete">Delete</string>
+    <string name="droid_caps">DROID</string>
+    <string name="end_date_required">Please select an end date</string>
+    <string name="energy">Energy</string>
+    <string name="energy_required">Please select an energy level</string>
+    <string name="frequency">Frequency</string>
+    <string name="from">From</string>
+    <string name="gender">Gender</string>
+    <string name="generate">Generate</string>
+    <string name="generate_dots">Generate...</string>
+    <string name="happiness">Happiness</string>
+    <string name="happiness_required">Please select a happiness level</string>
+    <string name="height">Height</string>
+    <string name="herbal_supplements">Herbal Supplements</string>
+    <string name="home">Home</string>
+    <string name="how_taken">How Taken</string>
+    <string name="incorrect_date_range">Start date must be before or on end date</string>
+    <string name="medication_details">Medication Details</string>
+    <string name="medication_entry_instructions">Enter your medication information below.</string>
+    <string name="medication_name">Medication Name</string>
+    <string name="medications">Medications</string>
+    <string name="mobility">Mobility</string>
+    <string name="mobility_required">Please select a mobility level</string>
+    <string name="my_alarms">My Alarms</string>
+    <string name="my_allergies">My Allergies</string>
+    <string name="my_entries">My Entries (last 30 days)</string>
+    <string name="my_healthvault_info">My HealthVault Information</string>
+    <string name="my_otc_drugs">My Over the Counter Drugs</string>
+    <string name="my_prescription_drugs">My Prescription Drugs</string>
+    <string name="name">Name</string>
+    <string name="nutritional_supplements">Nutritional Supplements</string>
+    <string name="over_the_counter_drugs">Over the Counter Drugs</string>
+    <string name="prescribed_by">Prescribed By</string>
+    <string name="prescription_drugs">Prescription Drugs</string>
+    <string name="prompt_frequency">Select a frequency</string>
+    <string name="prompt_how_taken">Select how taken</string>
+    <string name="prompt_strength">Select a unit</string>
+    <string name="race">Race</string>
+    <string name="reason">Reason</string>
+    <string name="reason_for_taking_medication">Reason for Taking Medication</string>
+    <string name="save">Save</string>
+    <string name="select_odls">Select ODLs</string>
+    <string name="select_odls_required">Please select at least one ODL</string>
+    <string name="select_timeframe">Select Timeframe</string>
+    <string name="set_date">Set Date</string>
+    <string name="set_date_with_button">Click button to set date</string>
+    <string name="start_date_required">Please select a start date</string>
+    <string name="strength">Strength</string>
+    <string name="to">To</string>
+    <string name="weight">Weight</string>
+    <string name="wellness_diary">Wellness Diary</string>
+    <string name="wellness_diary_form_instructions">Use the sliders to indicate your levels.</string>
+    <string name="wellness_diary_report_instructions">Customize your wellness report below.</string>
+    <string name="wellness_entry_deleted">Entry successfully deleted.</string>
+    <string name="wellness_entry_saved">Entry successfully saved.</string>
+    <string-array name="medication_categories_list">
+        <item>@string/prescription_drugs</item>
+        <item>@string/over_the_counter_drugs</item>
+        <item>@string/nutritional_supplements</item>
+        <item>@string/herbal_supplements</item>
+    </string-array>
+    <string-array name="medication_frequencies">
+        <item>Minute(s)</item>
+        <item>Hour(s)</item>
+        <item>Day(s)</item>
+        <item>Week(s)</item>
+        <item>Month(s)</item>
+        <item>Year(s)</item>
+    </string-array>
+    <string-array name="medication_how_taken">
+        <item>By Mouth</item>
+        <item>By Injection</item>
+        <item>In the Ear</item>
+        <item>In the Eye</item>
+        <item>In the Nose</item>
+        <item>Inhaled</item>
+        <item>Rectal</item>
+        <item>Feeding Tube</item>
+        <item>IV Line</item>
+        <item>On the Skin</item>
+        <item>Under the Tongue</item>
+        <item>Vaginal</item>
+    </string-array>
+    <string-array name="medication_strength_units">
+        <item>CFU/ml</item>
+        <item>IU</item>
+        <item>mEq</item>
+        <item>mEq/ml</item>
+        <item>mg</item>
+        <item>mg/ml</item>
+        <item>%</item>
+        <item>U</item>
+        <item>Unt/ml</item>
+    </string-array>
+</resources>

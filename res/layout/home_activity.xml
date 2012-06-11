@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        <include android:id="@+id/home_activity_healthvault_header" layout="@layout/section_header" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:paddingTop="10dp" >
+            <ImageView
+                android:id="@+id/home_activity_user_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/profile_male" />
+            <TextView
+                android:id="@+id/home_activity_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/home_activity_user_name"
+                android:layout_alignLeft="@+id/home_activity_user_name"
+                android:text="@string/name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/home_activity_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/home_activity_user_pic"
+                android:layout_toRightOf="@+id/home_activity_user_pic"
+                android:text="User Name"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RelativeLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#313031"
+            android:layout_marginBottom="4dp" />
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp" >
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/birthdate"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/gender"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp" >
+                <TextView
+                    android:id="@+id/home_activity_user_birthdate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Birthdate"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/home_activity_user_gender"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Gender"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/race"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/blood_type"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp" >
+                <TextView
+                    android:id="@+id/home_activity_user_race"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Race"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/home_activity_user_blood_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Blood Type"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/height"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/weight"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp" >
+                <TextView
+                    android:id="@+id/home_activity_user_height"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Height"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/home_activity_user_weight"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="User Weight"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="10dp"
+                android:text="@string/wellness_diary_form_instructions"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+            <include android:id="@+id/wellness_activity_form_energy_label" layout="@layout/section_header" />
+            <include android:id="@+id/wellness_activity_form_energy_seekbar" layout="@layout/wellness_activity_seekbar" />
+            <include android:id="@+id/wellness_activity_form_happiness_label" layout="@layout/section_header" />
+            <include android:id="@+id/wellness_activity_form_happiness_seekbar" layout="@layout/wellness_activity_seekbar" />
+            <include android:id="@+id/wellness_activity_form_comfort_label" layout="@layout/section_header" />
+            <include android:id="@+id/wellness_activity_form_comfort_seekbar" layout="@layout/wellness_activity_seekbar" />
+            <include android:id="@+id/wellness_activity_form_mobility_label" layout="@layout/section_header" />
+            <include android:id="@+id/wellness_activity_form_mobility_seekbar" layout="@layout/wellness_activity_seekbar" />
+            <include android:id="@+id/wellness_activity_form_appetite_label" layout="@layout/section_header" />
+            <include android:id="@+id/wellness_activity_form_appetite_seekbar" layout="@layout/wellness_activity_seekbar" />
+        </LinearLayout>
+        <LinearLayout
+            style="@android:style/ButtonBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom" >
+            <Button
+                android:id="@+id/wellness_activity_form_save_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
+            <Button
+                android:id="@+id/wellness_activity_form_cancel_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

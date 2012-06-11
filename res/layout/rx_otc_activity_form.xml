@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="10dp"
+                android:text="@string/medication_entry_instructions"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+            <include android:id="@+id/rx_otc_activity_form_details_label" layout="@layout/section_header" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:padding="4dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medication_name" />
+                <EditText
+                    android:id="@+id/rx_otc_activity_form_name_field"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name" >
+                    <requestFocus />
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reason_for_taking_medication" />
+                <EditText
+                    android:id="@+id/rx_otc_activity_form_reason_field"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/reason" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/strength" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+                    <EditText
+                        android:id="@+id/rx_otc_activity_form_strength_field"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/strength" />
+                    <Spinner
+                        android:id="@+id/rx_otc_activity_form_strength_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/prompt_strength" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/how_taken" />
+                <Spinner
+                    android:id="@+id/rx_otc_activity_form_how_taken_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/prompt_how_taken" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frequency" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+                    <EditText
+                        android:id="@+id/rx_otc_activity_form_frequency_field"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/frequency" />
+                    <Spinner
+                        android:id="@+id/rx_otc_activity_form_frequency_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/prompt_frequency" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+                    <EditText
+                        android:id="@+id/rx_otc_activity_form_date_started_field"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:hint="@string/set_date_with_button" />
+                    <Button
+                        android:id="@+id/rx_otc_activity_form_date_started_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/set_date" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_discontinued" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+                    <EditText
+                        android:id="@+id/rx_otc_activity_form_date_discontinued_field"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:hint="@string/set_date_with_button" />
+                    <Button
+                        android:id="@+id/rx_otc_activity_form_date_discontinued_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/set_date" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prescribed_by" />
+                <EditText
+                    android:id="@+id/rx_otc_activity_form_prescribed_by_field"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prescribed_by" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            style="@android:style/ButtonBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom" >
+            <Button
+                android:id="@+id/rx_otc_activity_form_save_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/save" />
+            <Button
+                android:id="@+id/rx_otc_activity_form_delete_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:text="@string/delete" />
+            <Button
+                android:id="@+id/rx_otc_activity_form_cancel_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
