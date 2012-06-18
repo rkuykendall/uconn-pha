@@ -22,7 +22,7 @@ public class ServerConnectionHelper
 {
 	private static final String TAG = ServerConnection.class.getName();
 	private static final String VERB_TAG = "JSON_Server_VERBOSE";
-	private final static String SERVER_URL = "http://10.0.2.2:50006/Health"; 
+	private final static String SERVER_URL = "http://137.99.11.66/Health"; 
 	private static final String TRUE = "TRUE";
 
 	/**
