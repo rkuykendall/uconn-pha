@@ -34,6 +34,11 @@ public class TabsActivity extends TabActivity {
 		spec = tabHost.newTabSpec("wellness").setIndicator(getString(R.string.wellness_diary), res.getDrawable(R.drawable.ic_tab_wellness)).setContent(intent);
 		tabHost.addTab(spec);
 		
+		intent = new Intent().setClass(this, PermissionsActivity.class);
+		// TODO: Unhardcode these values
+		spec = tabHost.newTabSpec("wellness").setIndicator("Permissions", res.getDrawable(R.drawable.ic_tab_wellness)).setContent(intent);
+		tabHost.addTab(spec);
+		
 		intent = new Intent().setClass(this, AlarmsActivity.class);
 		spec = tabHost.newTabSpec("alarms").setIndicator(getString(R.string.alarms), res.getDrawable(R.drawable.ic_tab_alarms)).setContent(intent);
 		tabHost.addTab(spec);
