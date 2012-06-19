@@ -1,8 +1,6 @@
 package edu.uconn.pha;
 
-import android.app.Activity;
 import android.app.ExpandableListActivity;
-import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,14 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
+import edu.uconn.model.Permission;
+import edu.uconn.model.Policy;
 
 public class PermissionsActivity extends ExpandableListActivity {
-	private ExpandableListView listView;
 	private static final String TAG = PermissionsActivity.class.getName();
 
 	/** Called when the activity is first created. */
@@ -26,12 +21,30 @@ public class PermissionsActivity extends ExpandableListActivity {
 		super.onCreate(savedInstanceState);
 		// TODO: Dynamic title
 		setTitle("Permissions Page");  
+		
+		Policy policy = new Policy();
+		
+		// Yaira
+		int pid = policy.addProvider("Primary care physician");
+		policy.addPermission(pid, "Wellness", true, false);
+		policy.addPermission(pid, "Medications", true, true);
+		policy.addPermission(pid, "Allergies", true, true);
 
-		// retrieve an instance of the list view control
-		listView = (ExpandableListView) findViewById(R.id.permissions_activity_list_view);
+		// Alberto
+		pid = policy.addProvider("Clinical Pharmacist");
+		policy.addPermission(pid, "Wellness", false, false);
+		policy.addPermission(pid, "Medications", true, false);
+		policy.addPermission(pid, "Allergies", false, false);
+		
+		// Who
+		pid = policy.addProvider("Psychiatrist");
+		policy.addPermission(pid, "Wellness", true, false);
+		policy.addPermission(pid, "Medications", true, false);
+		policy.addPermission(pid, "Allergies", false, false);
+
 
 		// use a data adapter to map data to the list view layout
-		setListAdapter(new PermissionsList());
+		setListAdapter(new PermissionsList(policy));
 		
 		// Expand Groups
 		getExpandableListView().setGroupIndicator(null);
@@ -48,6 +61,12 @@ public class PermissionsActivity extends ExpandableListActivity {
 
 	public class PermissionsList extends BaseExpandableListAdapter
 	{		
+		private Policy policy;
+
+		public PermissionsList(Policy policy) {
+			this.policy = policy;
+		}
+
 		@Override
 		public Object getChild(int groupPosition, int childPosition) 
 		{   
@@ -64,6 +83,8 @@ public class PermissionsActivity extends ExpandableListActivity {
 		public View getChildView(int groupPosition, int childPosition,
 				boolean isLastChild, View convertView, ViewGroup parent) 
 		{
+			Permission permission = policy.getRole(groupPosition).getPermission(childPosition);
+			
 			// Initialize 
 			View view = null;
 			if( convertView != null ) {
@@ -73,9 +94,10 @@ public class PermissionsActivity extends ExpandableListActivity {
 			}
 
 			// Permission label
-			TextView permission = (TextView) view.findViewById( R.id.permission );
-			String[] permissions = new String[] {"Wellness", "Medications", "Allergies"};
-			permission.setText( permissions[childPosition % 3] );
+			TextView permissionLabel = (TextView) view.findViewById( R.id.permission );
+//			String[] permissions = new String[] {"Wellness", "Medications", "Allergies"};
+//			permission.setText( permissions[childPosition % 3] );
+			permissionLabel.setText(permission.getName());
 
 			// Read Label
 			TextView read = (TextView) view.findViewById( R.id.read );
@@ -83,7 +105,7 @@ public class PermissionsActivity extends ExpandableListActivity {
 
 			// Read Checkbox
 			CheckBox cbr = (CheckBox) view.findViewById( R.id.checkread );
-			cbr.setChecked( true );
+			cbr.setChecked( permission.canRead() );
 //			cbr.setOnCheckedChangeListener(new OnCheckedChangeListener()
 //			{
 //				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -98,7 +120,7 @@ public class PermissionsActivity extends ExpandableListActivity {
 
 			// Write Checkbox
 			CheckBox cbw = (CheckBox) view.findViewById( R.id.checkwrite );
-			cbw.setChecked( true );
+			cbw.setChecked( permission.canWrite() );
 
 			return view;
 		}
@@ -106,7 +128,7 @@ public class PermissionsActivity extends ExpandableListActivity {
 		@Override
 		public int getChildrenCount(int groupPosition) 
 		{   
-			return 3; // Guaranteed random by dice roll.
+			return policy.getRole(groupPosition).numPermissions();
 		}
 
 		@Override
@@ -117,7 +139,7 @@ public class PermissionsActivity extends ExpandableListActivity {
 		@Override
 		public int getGroupCount() 
 		{   
-			return 3;
+			return policy.numRoles();
 		}
 
 		@Override
@@ -139,9 +161,11 @@ public class PermissionsActivity extends ExpandableListActivity {
 			tv.setPadding(10, 10, 10, 10); 
 
 			// Content
-			String[] doctors = new String[] {"Dr. Yaira", "Dr. Alberto", "Dr. Who"};
-			tv.setText(doctors[groupPosition % 3]);
+//			String[] doctors = new String[] {"Dr. Yaira", "Dr. Alberto", "Dr. Who"};
+//			tv.setText(doctors[groupPosition % 3]);
 
+			tv.setText(policy.getRole(groupPosition).getName());
+			
 			// Return
 			return tv;
 		}
