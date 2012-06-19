@@ -1,8 +1,11 @@
 package edu.uconn.pha;
 
 import android.app.Activity;
+import android.app.ExpandableListActivity;
+import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -13,14 +16,14 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PermissionsActivity extends Activity {
+public class PermissionsActivity extends ExpandableListActivity {
 	private ExpandableListView listView;
+	private static final String TAG = PermissionsActivity.class.getName();
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.permissions_activity);
 		// TODO: Dynamic title
 		setTitle("Permissions Page");  
 
@@ -28,14 +31,20 @@ public class PermissionsActivity extends Activity {
 		listView = (ExpandableListView) findViewById(R.id.permissions_activity_list_view);
 
 		// use a data adapter to map data to the list view layout
-		listView.setAdapter(new PermissionsList());
+		setListAdapter(new PermissionsList());
 		
 		// Expand Groups
-		for(int i = 0; i < listView.getExpandableListAdapter().getGroupCount(); i++)
+		getExpandableListView().setGroupIndicator(null);
+		for(int i = 0; i < getExpandableListAdapter().getGroupCount(); i++)
 		{
-			listView.expandGroup(i);
+			getExpandableListView().expandGroup(i);
 		}
 	}
+	
+    public void onContentChanged  () {
+        super.onContentChanged();
+        Log.d(TAG, "onContentChanged");
+    }
 
 	public class PermissionsList extends BaseExpandableListAdapter
 	{		
@@ -75,13 +84,13 @@ public class PermissionsActivity extends Activity {
 			// Read Checkbox
 			CheckBox cbr = (CheckBox) view.findViewById( R.id.checkread );
 			cbr.setChecked( true );
-			cbr.setOnCheckedChangeListener(new OnCheckedChangeListener()
-			{
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-				{
-					Toast.makeText(getApplicationContext(), "Check box.", Toast.LENGTH_SHORT).show();
-				}
-			});
+//			cbr.setOnCheckedChangeListener(new OnCheckedChangeListener()
+//			{
+//				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+//				{
+//					Toast.makeText(getApplicationContext(), "Check box.", Toast.LENGTH_SHORT).show();
+//				}
+//			});
 
 			// Write Label
 			TextView write = (TextView) view.findViewById( R.id.write );
@@ -127,7 +136,7 @@ public class PermissionsActivity extends Activity {
 			// Design
 			tv.setBackgroundColor(Color.rgb(20,20,20));
 			tv.setTextColor(Color.WHITE);
-			tv.setPadding(10, 7, 7, 7); 
+			tv.setPadding(10, 10, 10, 10); 
 
 			// Content
 			String[] doctors = new String[] {"Dr. Yaira", "Dr. Alberto", "Dr. Who"};
