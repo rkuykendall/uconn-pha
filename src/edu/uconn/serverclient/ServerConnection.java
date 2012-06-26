@@ -17,6 +17,7 @@ import edu.uconn.model.Medication;
 import edu.uconn.model.ODL;
 import edu.uconn.model.ODLQuery;
 import edu.uconn.model.Person;
+import edu.uconn.model.Policy;
 
 public class ServerConnection {              
 	// Allows for printing to Log
@@ -78,6 +79,34 @@ public class ServerConnection {
 		return odlList;
 
 	}
+
+	public static synchronized Policy getPolicy() {
+		Policy policy = new Policy();
+		int pid = policy.addProvider("Primary care physician");
+		policy.addPermission(pid, "Wellness", true, true);
+		policy.addPermission(pid, "Medications", true, true);
+		policy.addPermission(pid, "Allergies", true, true);
+
+		pid = policy.addProvider("Clinical Pharmacist");
+		policy.addPermission(pid, "Wellness", true, true);
+		policy.addPermission(pid, "Medications", true, true);
+		policy.addPermission(pid, "Allergies", true, true);
+
+		pid = policy.addProvider("Psychiatrist");
+		policy.addPermission(pid, "Wellness", true, true);
+		policy.addPermission(pid, "Medications", true, true);
+		policy.addPermission(pid, "Allergies", true, true);
+		
+		try {
+			Log.v(TAG, policy.toJSONObject().toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return policy;
+	}
+
 
 	public static boolean sendODLJSON(ODL odl)//String publicId, String recordId)
 	throws JSONException 

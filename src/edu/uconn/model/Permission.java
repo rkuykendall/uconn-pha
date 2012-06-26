@@ -1,10 +1,25 @@
 package edu.uconn.model;
 
-public class Permission {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
+
+public class Permission extends HealthItem {
+	private static final String TAG = Permission.class.getName();
 	private String name;
 	private boolean read;
 	private boolean write;
 	
+	public JSONObject toJSONObject() throws JSONException {
+		JSONObject jo = super.toJSONObject();
+		jo.put("Name", name);
+		jo.put("Read", read);
+		jo.put("Write", write);
+		return jo;
+	}
+
 	public Permission(String name, boolean read, boolean write) {
 		this.name = name;
 		this.read = read;
@@ -28,11 +43,13 @@ public class Permission {
 	public boolean canRead() {
 		return read;
 	}
+	
 	/**
 	 * @param read the read privilege to set
 	 */
 	public void setRead(boolean read) {
 		this.read = read;
+        Log.d(TAG, "Read set on " + name+" to "+read+".");
 	}
 	
 	/**
@@ -47,6 +64,7 @@ public class Permission {
 	 */
 	public void setWrite(boolean write) {
 		this.write = write;
+        Log.d(TAG, "Read set on " + name+" to "+write+".");
 	}
 	
 
