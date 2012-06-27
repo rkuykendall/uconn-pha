@@ -1,6 +1,5 @@
 package edu.uconn.model;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +24,12 @@ public class Permission extends HealthItem {
 		this.read = read;
 		this.write = write;
 	}
+	public Permission(JSONObject jo) throws JSONException {
+		this.name = jo.getString("Name");
+		this.read = jo.getBoolean("Read");
+		this.write = jo.getBoolean("Write");
+	}
+
 	/**
 	 * @return the name
 	 */

@@ -29,6 +29,7 @@ public class ServerConnection {
 	private static ArrayList<ODL> odlList = null;
 	private static ArrayList<Medication> medicationList = null;
 	private static Person person = null;
+	private static Policy policy = null;
 
 	public static synchronized ArrayList<ODL> getODLList(boolean forceUpdate) 
 	throws JSONException
@@ -80,29 +81,65 @@ public class ServerConnection {
 
 	}
 
-	public static synchronized Policy getPolicy() {
-		Policy policy = new Policy();
-		int pid = policy.addProvider("Primary care physician");
-		policy.addPermission(pid, "Wellness", true, true);
-		policy.addPermission(pid, "Medications", true, true);
-		policy.addPermission(pid, "Allergies", true, true);
-
-		pid = policy.addProvider("Clinical Pharmacist");
-		policy.addPermission(pid, "Wellness", true, true);
-		policy.addPermission(pid, "Medications", true, true);
-		policy.addPermission(pid, "Allergies", true, true);
-
-		pid = policy.addProvider("Psychiatrist");
-		policy.addPermission(pid, "Wellness", true, true);
-		policy.addPermission(pid, "Medications", true, true);
-		policy.addPermission(pid, "Allergies", true, true);
+	public static synchronized Policy getPolicy() throws JSONException {
+//		String response = "{ \"Roles\":[ { \"Name\":\"Primary care physician\"," +
+//				" \"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
+//				"'\"Read\":true } ] }, { \"Name\":\"Clinical Pharmacist\", " +
+//				"\"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
+//				"\"Read\":true } ] }, { \"Name\":\"Psychiatrist\", " +
+//				"\"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
+//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
+//				"\"Read\":true } ] } ],\"Key\":\"KEYKEYKEYKEY\" }";
 		
-		try {
-			Log.v(TAG, policy.toJSONObject().toString());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String response = "{\"Roles\":[{" +
+				"\"Name\":\"Primary care physician\"," +
+				"\"Permissions\":[" +
+				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}," +
+				"{\"Name\":\"Clinical Pharmacist\",\"Permissions\":[" +
+				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}," +
+				"{\"Name\":\"Psychiatrist\",\"Permissions\":[" +
+				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
+				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}" +
+				"],\"Key\":\"KEYKEYKE-YKEY-KEYK-EYKE-YKEYKEYKEYKE\"}";
+		
+		JSONObject json = ServerConnectionHelper.toJSONObject(response);
+		policy = new Policy(json);
+		
+//		Policy policy = new Policy();
+//		policy.setKey("KEYKEYKE-YKEY-KEYK-EYKE-YKEYKEYKEYKE");
+//
+//		int pid = policy.addProvider("Primary care physician");
+//		policy.addPermission(pid, "Wellness", true, true);
+//		policy.addPermission(pid, "Medications", true, true);
+//		policy.addPermission(pid, "Allergies", true, true);
+//
+//		pid = policy.addProvider("Clinical Pharmacist");
+//		policy.addPermission(pid, "Wellness", true, true);
+//		policy.addPermission(pid, "Medications", true, true);
+//		policy.addPermission(pid, "Allergies", true, true);
+//
+//		pid = policy.addProvider("Psychiatrist");
+//		policy.addPermission(pid, "Wellness", true, true);
+//		policy.addPermission(pid, "Medications", true, true);
+//		policy.addPermission(pid, "Allergies", true, true);
+//		
+//		
+//		try {
+//			Log.v(TAG, policy.toJSONObject().toString());
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		return policy;
 	}

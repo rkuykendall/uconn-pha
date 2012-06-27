@@ -11,6 +11,15 @@ public class Role extends HealthItem {
 	private String name = "";
 	private List<Permission> permissions = new ArrayList<Permission>();
 	
+	public Role(JSONObject jo) throws JSONException {
+		this.name = jo.getString("Name");
+		
+		JSONArray ja = jo.getJSONArray("Permissions");
+		for(int i = 0; i < ja.length(); i++) {
+			permissions.add(new Permission(ja.getJSONObject(i)));
+		}
+	}
+
 	public Role(String name) {
 		this.name = name;
 	}

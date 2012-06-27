@@ -7,11 +7,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class Policy extends HealthItem {
+	private static final String TAG = Policy.class.getName();
 	private List<Role> roles = new ArrayList<Role>();
+
+	public Policy(JSONObject jo) throws JSONException {
+		super(jo);
+		
+		JSONArray ja = jo.getJSONArray("Roles");
+		for(int i = 0; i < ja.length(); i++) {
+			roles.add(new Role(ja.getJSONObject(i)));
+		}
+	}
+	
+	public Policy() {
+	}
 
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = super.toJSONObject();
+		Log.v(TAG, jo.toString());
+		
 		JSONArray jroles = new JSONArray();
 		for(int i = 0; i < roles.size(); i++) {
 			jroles.put(roles.get(i).toJSONObject());

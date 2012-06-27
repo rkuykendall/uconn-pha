@@ -1,5 +1,7 @@
 package edu.uconn.pha;
 
+import org.json.JSONException;
+
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +23,11 @@ public class PermissionsActivity extends ExpandableListActivity {
 		setTitle("Permissions Page");  
 
 
-		policy = ServerConnection.getPolicy();
+		try {
+			policy = ServerConnection.getPolicy();
+		} catch (JSONException e) {
+			policy = new Policy();
+		}
 		
 		Log.d(TAG, "Testing Logs" );
 

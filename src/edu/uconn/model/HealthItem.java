@@ -3,8 +3,10 @@ package edu.uconn.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class HealthItem {
+import android.util.Log;
 
+public class HealthItem {
+	private static final String TAG = HealthItem.class.getName();
 	private static final String BLANK = "";
 
 	protected String key = "";
@@ -12,6 +14,7 @@ public class HealthItem {
 	public HealthItem() {};
 
 	public HealthItem(JSONObject jo) throws JSONException {
+		Log.v(TAG, jo.toString());
 		key = jo.getString("Key");
 	}
 
@@ -38,6 +41,7 @@ public class HealthItem {
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
 		jo.put("Key", jsonNull(key));
+		// Log.v(TAG, jo.toString());
 
 		return jo;
 	}
