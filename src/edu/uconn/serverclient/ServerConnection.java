@@ -137,7 +137,6 @@ public class ServerConnection {
 //		try {
 //			Log.v(TAG, policy.toJSONObject().toString());
 //		} catch (JSONException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 
@@ -313,9 +312,9 @@ public class ServerConnection {
 		deleteFromArrayList(medicationList, key);
 	}
 
-	private static void deleteFromArrayList(ArrayList list, String key)
+	private static void deleteFromArrayList(ArrayList<?> list, String key)
 	{
-		Iterator<HealthItem> i = list.iterator();
+		Iterator<HealthItem> i = (Iterator<HealthItem>) list.iterator();
 		HealthItem hi = null;
 		Log.v(TAG, "Removing Key: " + key);
 		boolean flag = false;
