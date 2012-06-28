@@ -41,7 +41,6 @@ public class HealthItem {
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = new JSONObject();
 		jo.put("Key", jsonNull(key));
-		// Log.v(TAG, jo.toString());
 
 		return jo;
 	}

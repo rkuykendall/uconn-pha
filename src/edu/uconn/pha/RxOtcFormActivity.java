@@ -1,13 +1,9 @@
 package edu.uconn.pha;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.json.JSONException;
 
-import edu.uconn.listeners.CustomOnItemSelectedListener;
-import edu.uconn.model.Medication;
-import edu.uconn.serverclient.ServerConnection;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -21,6 +17,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import edu.uconn.listeners.CustomOnItemSelectedListener;
+import edu.uconn.model.Medication;
+import edu.uconn.serverclient.ServerConnection;
 
 public class RxOtcFormActivity extends Activity {
 	
@@ -28,7 +27,6 @@ public class RxOtcFormActivity extends Activity {
 	
 	private static final int START_DATE_DIALOG_ID = 0;
 	private static final int END_DATE_DIALOG_ID = 1;
-	private static final String DATE_FORMAT = "MM-dd-yy";
 	
 	private ArrayAdapter<CharSequence> adapter;
 	private Button startButton, endButton;
@@ -42,7 +40,6 @@ public class RxOtcFormActivity extends Activity {
 	private Calendar calendar;
 	private DatePickerDialog.OnDateSetListener startDateListener, endDateListener;
 	private int startDay, endDay, startMonth, endMonth, startYear, endYear;
-	private SimpleDateFormat simpleDateFormat;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,14 +52,12 @@ public class RxOtcFormActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         if(extras != null);
         {
-        	prescribed = new Boolean(extras.getBoolean("Prescribed"));
+        	prescribed = Boolean.valueOf(extras.getBoolean("Prescribed"));
+        	// Was: prescribed = new Boolean(extras.getBoolean("Prescribed"));
         	listIndex = extras.getInt("GlobalIndex", -1);
         }
-        
-     // set the date format
-		simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
 
-		// get the current date for each date listener
+        // get the current date for each date listener
 		calendar = Calendar.getInstance();
 		startYear = calendar.get(Calendar.YEAR);
 		endYear = calendar.get(Calendar.YEAR);
@@ -255,21 +250,39 @@ public class RxOtcFormActivity extends Activity {
 				endButton = (Button) findViewById(R.id.prescription_activity_form_date_discontinued_button);
 				endButton.setText(med.getDateDiscontinued());
 				
-				ArrayAdapter arrayAdapter;
-				int pos;
+				ArrayAdapter<String> arrayAdapter;
+				int pos = 0;
 				// "If" statements cover for old data.
 				if(strengthArray.length > 1)
 				{
-					arrayAdapter = (ArrayAdapter)strengthSpinner.getAdapter();
-					pos = arrayAdapter.getPosition(strengthArray[1]);
-					strengthSpinner.setSelection(pos);
+					// Cycle through spinner, check for string
+			        for (int i = 0; i < strengthSpinner.getCount(); i++){
+			            if (strengthSpinner.getItemAtPosition(i).equals(strengthArray[1])){
+			                pos = i;
+			            }
+			        }
+			        strengthSpinner.setSelection(pos);
+
+			        // === Unsafe Cast
+			        // arrayAdapter = (ArrayAdapter<String>) strengthSpinner.getAdapter();
+			        // pos = arrayAdapter.getPosition(strengthArray[1]);
+			        // strengthSpinner.setSelection(pos);
 				}
 				
 				if(freqArray.length > 1)
 				{
-					arrayAdapter = (ArrayAdapter)frequencySpinner.getAdapter();
-					pos = arrayAdapter.getPosition(freqArray[1]);
-					frequencySpinner.setSelection(pos);
+					// Cycle through spinner, check for string
+			        for (int i = 0; i < frequencySpinner.getCount(); i++){
+			            if (frequencySpinner.getItemAtPosition(i).equals(freqArray[1])){
+			                pos = i;
+			            }
+			        }
+			        frequencySpinner.setSelection(pos);
+
+			        // === Unsafe Cast
+					// arrayAdapter = (ArrayAdapter<String>) frequencySpinner.getAdapter();
+					// pos = arrayAdapter.getPosition(freqArray[1]);
+					// frequencySpinner.setSelection(pos);
 				}
 				
 			} 

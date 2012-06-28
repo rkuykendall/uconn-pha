@@ -19,8 +19,7 @@ public class PermissionsActivity extends ExpandableListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// TODO: Dynamic title
-		setTitle("Permissions Page");  
+		setTitle(R.string.permissions);
 
 
 		try {

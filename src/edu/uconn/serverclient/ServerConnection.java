@@ -81,21 +81,7 @@ public class ServerConnection {
 
 	}
 
-	public static synchronized Policy getPolicy() throws JSONException {
-//		String response = "{ \"Roles\":[ { \"Name\":\"Primary care physician\"," +
-//				" \"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
-//				"'\"Read\":true } ] }, { \"Name\":\"Clinical Pharmacist\", " +
-//				"\"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
-//				"\"Read\":true } ] }, { \"Name\":\"Psychiatrist\", " +
-//				"\"Permissions\":[ { \"Name\":\"Wellness\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Medications\", \"Write\":true, " +
-//				"\"Read\":true }, { \"Name\":\"Allergies\", \"Write\":true, " +
-//				"\"Read\":true } ] } ],\"Key\":\"KEYKEYKEYKEY\" }";
-		
+	public static synchronized Policy getPolicy() throws JSONException {		
 		String response = "{\"Roles\":[{" +
 				"\"Name\":\"Primary care physician\"," +
 				"\"Permissions\":[" +
@@ -132,7 +118,6 @@ public class ServerConnection {
 //		policy.addPermission(pid, "Wellness", true, true);
 //		policy.addPermission(pid, "Medications", true, true);
 //		policy.addPermission(pid, "Allergies", true, true);
-//		
 //		
 //		try {
 //			Log.v(TAG, policy.toJSONObject().toString());
@@ -313,14 +298,14 @@ public class ServerConnection {
 	}
 
 	private static void deleteFromArrayList(ArrayList<?> list, String key)
-	{
-		Iterator<HealthItem> i = (Iterator<HealthItem>) list.iterator();
+	{			
+		Iterator<?> i = list.iterator();
 		HealthItem hi = null;
 		Log.v(TAG, "Removing Key: " + key);
 		boolean flag = false;
 		while(i.hasNext())
 		{
-			hi = i.next();
+			hi = (HealthItem) i.next();
 			if(hi.getKey().equals(key))
 			{
 				flag = true;

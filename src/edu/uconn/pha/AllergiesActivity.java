@@ -46,8 +46,8 @@ public class AllergiesActivity extends Activity {
 		relativeLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO start the alarms form activity
-				Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+				// TODO Implement Allergy Add Form
+				Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -58,7 +58,7 @@ public class AllergiesActivity extends Activity {
 		// add the header view to the list view
 		listView.addHeaderView(view, null, false);
 
-		// TODO this is fake data for demo purposes only
+		// TODO Implement Real Allergy Data
 		String[] fakeItems = {"Allergy 1", "Allergy 2", "Allergy 3", "Allergy 4"};
 
 		// use a data adapter to map data to the list view layout
@@ -69,8 +69,8 @@ public class AllergiesActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-				// TODO implement this functionality
-				Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+				// TODO Implement Allergy Edit Form
+				Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

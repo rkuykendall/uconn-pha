@@ -71,12 +71,12 @@ public class MedicationsActivity extends Activity {
 					startActivity(intent);
 					break;
 				case 3:
-					// TODO implement nutritional supplements activity
-					Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+					// TODO Implement Nutritional Supplements Activity
+					Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 					break;
 				case 4:
-					// TODO implement herbal supplements activity
-					Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+					// TODO Implement Herbal Supplements Activity
+					Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 					break;
 				default:
 					Log.e(TAG, "Error :: Invalid Medication Category Selection");

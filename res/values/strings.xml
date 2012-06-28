@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add_allergy">Add Allergy</string>
-    <string name="add_new_dots">Add New...</string>
+    <string name="add_new_dots">Add New&#8230;</string>
     <string name="add_otc_drug">Add Over the Counter Drug</string>
     <string name="add_prescription_drug">Add Prescription Drug</string>
     <string name="alarms">Alarms</string>
@@ -31,7 +31,7 @@
     <string name="from">From</string>
     <string name="gender">Gender</string>
     <string name="generate">Generate</string>
-    <string name="generate_dots">Generate...</string>
+    <string name="generate_dots">Generate&#8230;</string>
     <string name="happiness">Happiness</string>
     <string name="happiness_required">Please select a happiness level</string>
     <string name="height">Height</string>
@@ -116,4 +116,6 @@
         <item>U</item>
         <item>Unt/ml</item>
     </string-array>
+    <string name="permissions">Permissions</string>
+    <string name="missing_feature">Feature not available at this time.</string>
 </resources>

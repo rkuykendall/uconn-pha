@@ -46,8 +46,8 @@ public class AlarmsActivity extends Activity {
 		relativeLayout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO start the alarms form activity
-				Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+				// TODO Implement Alarms Form
+				Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -58,7 +58,7 @@ public class AlarmsActivity extends Activity {
 		// add the header view to the list view
 		listView.addHeaderView(view, null, false);
 
-		// TODO this is fake data for demo purposes only
+		// TODO Implement Real Alarm Data
 		String[] fakeItems = {"Alarm 1", "Alarm 2", "Alarm 3"};
 
 		// use a data adapter to map data to the list view layout
@@ -69,8 +69,8 @@ public class AlarmsActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-				// TODO implement this functionality
-				Toast.makeText(getApplicationContext(), "Feature not available at this time", Toast.LENGTH_SHORT).show();
+				// TODO Implement Alarm Form
+				Toast.makeText(getApplicationContext(), getString(R.string.missing_feature), Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

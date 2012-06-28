@@ -30,8 +30,16 @@ public class Person extends HealthItem {
 
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = super.toJSONObject();
-		// TODO: when updating the objects do it here.....
-		//jo.put("basicInfo", basicInfo.toJSONObject());
+		
+		jo.put("firstName", firstName);
+		jo.put("lastName", lastName);
+		jo.put("birthDate", birthDate);
+		jo.put("bloodType", bloodType);
+		jo.put("race", race);
+		jo.put("height", height.toJSONObject());
+		jo.put("weight", weight.toJSONObject());
+		jo.put("basicInfo", basicInfo.toJSONObject());
+
 		return jo;
 	}
 

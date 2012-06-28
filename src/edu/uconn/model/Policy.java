@@ -27,13 +27,13 @@ public class Policy extends HealthItem {
 
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = super.toJSONObject();
-		Log.v(TAG, jo.toString());
 		
 		JSONArray jroles = new JSONArray();
 		for(int i = 0; i < roles.size(); i++) {
 			jroles.put(roles.get(i).toJSONObject());
 		}
 		jo.put("Roles",jroles);
+		Log.v(TAG, "Generated Policy JSON: "+jo.toString());
 		return jo;
 	}
 	

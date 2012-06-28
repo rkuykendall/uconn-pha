@@ -27,7 +27,7 @@ public class ServerConnectionHelper
 
 	/**
 	 * Makes an http request given the string parameters.
-	 * "?" is necessary at start of params
+	 * "?" is necessary at start of parameters
 	 * @param params
 	 * @return 
 	 * @return string object.

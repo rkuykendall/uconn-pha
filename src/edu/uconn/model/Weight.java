@@ -20,6 +20,7 @@ public class Weight extends HealthItem {
 
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = super.toJSONObject();
+		jo.put("weightValue", weightValue);
 
 		return jo;
 	}

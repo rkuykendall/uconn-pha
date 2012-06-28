@@ -18,7 +18,9 @@ public class Height extends HealthItem {
 
 	public JSONObject toJSONObject() throws JSONException {
 		JSONObject jo = super.toJSONObject();
-
+		jo.put("heightValue", jsonNull(heightValue));
+		jo.put("when", jsonNull(when));
+		
 		return jo;
 	}
 

@@ -23,35 +23,42 @@ public class TabsActivity extends TabActivity {
 		// reusable intent for each tab
 		Intent intent;
 
-		// create an intent to launch an activity for the tab (to be reused)
+		// === Creating Tabs
+		// 1) Create an intent to launch an activity for the tab (to be reused)
+		// 2) Initialize a TabSpec for each tab and add it to the TabHost
+		// 3) Add the tabSpec to the tabHost
+
+		// Home
 		intent = new Intent().setClass(this, HomeActivity.class);
-		// initialize a TabSpec for each tab and add it to the TabHost
 		spec = tabHost.newTabSpec("home").setIndicator(getString(R.string.home), res.getDrawable(R.drawable.ic_tab_home)).setContent(intent);
 		tabHost.addTab(spec);
-
-		// do the same for the other tabs
+		
+		// Wellness
 		intent = new Intent().setClass(this, WellnessActivity.class);
 		spec = tabHost.newTabSpec("wellness").setIndicator(getString(R.string.wellness_diary), res.getDrawable(R.drawable.ic_tab_wellness)).setContent(intent);
 		tabHost.addTab(spec);
 		
+		// Permissions
 		intent = new Intent().setClass(this, PermissionsActivity.class);
-		// TODO: Unhardcode these values
-		spec = tabHost.newTabSpec("wellness").setIndicator("Permissions", res.getDrawable(R.drawable.ic_tab_wellness)).setContent(intent);
+		spec = tabHost.newTabSpec("permissions").setIndicator(getString(R.string.permissions), res.getDrawable(R.drawable.ic_tab_permissions)).setContent(intent);
 		tabHost.addTab(spec);
-		
+
+		// Alarms
 		intent = new Intent().setClass(this, AlarmsActivity.class);
 		spec = tabHost.newTabSpec("alarms").setIndicator(getString(R.string.alarms), res.getDrawable(R.drawable.ic_tab_alarms)).setContent(intent);
 		tabHost.addTab(spec);
 
+		// Medications
 		intent = new Intent().setClass(this, MedicationsActivity.class);
 		spec = tabHost.newTabSpec("medications").setIndicator(getString(R.string.medications), res.getDrawable(R.drawable.ic_tab_medications)).setContent(intent);
 		tabHost.addTab(spec);
 		
+		// Allergies
 		intent = new Intent().setClass(this, AllergiesActivity.class);
 		spec = tabHost.newTabSpec("allergies").setIndicator(getString(R.string.allergies), res.getDrawable(R.drawable.ic_tab_allergies)).setContent(intent);
 		tabHost.addTab(spec);
 
-		// set the current tab (default Home)
+		// set the current tab ( default to  Home )
 		tabHost.setCurrentTab(0);
 	}
 }
