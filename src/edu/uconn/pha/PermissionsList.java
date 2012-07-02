@@ -44,11 +44,14 @@ public class PermissionsList extends BaseExpandableListAdapter {
 
 		// Initialize 
 		View view = null;
-		if( convertView != null ) {
-			view = convertView;
-		} else {
+		// TODO: Fix convertview in PermissionsList
+		// Convertview causes check boxes to
+		// randomly check and uncheck.
+//		if( convertView != null ) {
+//			view = convertView;
+//		} else {
 			view = context.getLayoutInflater().inflate(R.layout.permissions_object, parent, false); 
-		}
+//		}
 
 		// Permission label
 		TextView permissionLabel = (TextView) view.findViewById( R.id.permission );
