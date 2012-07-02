@@ -118,4 +118,17 @@
     </string-array>
     <string name="permissions">Permissions</string>
     <string name="missing_feature">Feature not available at this time.</string>
+    <string name="person_photo_description">Person Photo</string>
+    <string name="person_filler_birthdate">User Birth Date</string>
+    <string name="person_filler_gender">User Gender</string>
+    <string name="person_filler_race">User Race</string>
+    <string name="person_filler_blood_type">User Blood Type</string>
+    <string name="person_filler_height">User Height</string>
+    <string name="person_filler_weight">User Weight</string>
+    <string name="person_filler_name">User Name</string>
+    <string name="date_filler">--/--/----</string>
+    <string name="ui_filler_list_item_button">List Item Button Text</string>
+    <string name="ui_filler_list_item">List Item Text</string>
+    <string name="ui_filler_list_item_button_image">Content description missing.</string>
+    <string name="ui_filler_list_item_arrow">list_item_arrow</string>
 </resources>

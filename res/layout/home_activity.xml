@@ -5,7 +5,7 @@
     android:fillViewport="true" >
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
         <include android:id="@+id/home_activity_healthvault_header" layout="@layout/section_header" />
         <RelativeLayout
@@ -22,6 +22,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="4dp"
+                android:contentDescription="@string/person_photo_description"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/profile_male" />
             <TextView
@@ -38,12 +39,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/home_activity_user_pic"
                 android:layout_toRightOf="@+id/home_activity_user_pic"
-                android:text="User Name"
+                android:text="@string/person_filler_name"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
         <View
             android:layout_width="fill_parent"
-            android:layout_height="1px"
+            android:layout_height="1dp"
             android:background="#313031"
             android:layout_marginBottom="4dp" />
         <TableLayout
@@ -75,14 +76,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Birthdate"
+                    android:text="@string/person_filler_birthdate"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
                 <TextView
                     android:id="@+id/home_activity_user_gender"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Gender"
+                    android:text="@string/person_filler_gender"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
             <TableRow
@@ -110,14 +111,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Race"
+                    android:text="@string/person_filler_race"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
                 <TextView
                     android:id="@+id/home_activity_user_blood_type"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Blood Type"
+                    android:text="@string/person_filler_blood_type"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
             <TableRow
@@ -145,14 +146,14 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Height"
+                    android:text="@string/person_filler_weight"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
                 <TextView
                     android:id="@+id/home_activity_user_weight"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="User Weight"
+                    android:text="@string/person_filler_height"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
         </TableLayout>

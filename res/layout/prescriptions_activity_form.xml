@@ -5,11 +5,11 @@
     android:fillViewport="true" >
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
             android:layout_weight="1"
             android:gravity="top"
             android:orientation="vertical" >
@@ -58,7 +58,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/prescription_activity_form_strength_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/strength" />
@@ -87,7 +87,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/prescription_activity_form_frequency_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/frequency" />
@@ -109,7 +109,7 @@
                         android:id="@+id/prescription_activity_form_date_started_button"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="--/--/----" />
+                        android:text="@string/date_filler" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
                         android:id="@+id/prescription_activity_form_date_discontinued_button"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:text="--/--/----" />
+                        android:text="@string/date_filler" />
                 </LinearLayout>
                 <TextView
                     android:id="@+id/prescription_activity_form_prescribed_by_label"

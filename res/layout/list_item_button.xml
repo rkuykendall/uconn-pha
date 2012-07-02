@@ -4,23 +4,27 @@
     android:layout_height="wrap_content"
     android:background="@android:drawable/list_selector_background"
     android:clickable="true" >
+
     <ImageView
         android:id="@+id/included_list_item_button_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:contentDescription="@string/ui_filler_list_item_button_image"
         android:src="@drawable/blank" />
+
     <TextView
         android:id="@+id/included_list_item_button_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/included_list_item_button_image"
+        android:duplicateParentState="true"
         android:paddingBottom="10dp"
         android:paddingLeft="2dp"
         android:paddingTop="10dp"
-        android:duplicateParentState="true"
-        android:text="List Item Button Text"
+        android:text="@string/ui_filler_list_item_button"
         android:textSize="16sp" />
+
 </RelativeLayout>

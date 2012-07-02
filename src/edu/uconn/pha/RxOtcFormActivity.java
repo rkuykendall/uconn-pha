@@ -250,7 +250,8 @@ public class RxOtcFormActivity extends Activity {
 				endButton = (Button) findViewById(R.id.prescription_activity_form_date_discontinued_button);
 				endButton.setText(med.getDateDiscontinued());
 				
-				ArrayAdapter<String> arrayAdapter;
+				// === Unsafe Cast
+				// ArrayAdapter<String> arrayAdapter;
 				int pos = 0;
 				// "If" statements cover for old data.
 				if(strengthArray.length > 1)

@@ -5,11 +5,11 @@
     android:fillViewport="true" >
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
             android:layout_weight="1"
             android:gravity="top"
             android:orientation="vertical" >
@@ -58,7 +58,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/rx_otc_activity_form_strength_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/strength" />
@@ -87,7 +87,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/rx_otc_activity_form_frequency_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="@string/frequency" />
@@ -103,7 +103,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/rx_otc_activity_form_date_started_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:clickable="false"
@@ -124,7 +124,7 @@
                     android:gravity="center_vertical" >
                     <EditText
                         android:id="@+id/rx_otc_activity_form_date_discontinued_field"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:clickable="false"
