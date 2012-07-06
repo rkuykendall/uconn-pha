@@ -44,9 +44,9 @@ public class TabsActivity extends TabActivity {
 		tabHost.addTab(spec);
 
 		// Alarms
-		intent = new Intent().setClass(this, AlarmsActivity.class);
-		spec = tabHost.newTabSpec("alarms").setIndicator(getString(R.string.alarms), res.getDrawable(R.drawable.ic_tab_alarms)).setContent(intent);
-		tabHost.addTab(spec);
+//		intent = new Intent().setClass(this, AlarmsActivity.class);
+//		spec = tabHost.newTabSpec("alarms").setIndicator(getString(R.string.alarms), res.getDrawable(R.drawable.ic_tab_alarms)).setContent(intent);
+//		tabHost.addTab(spec);
 
 		// Medications
 		intent = new Intent().setClass(this, MedicationsActivity.class);
@@ -54,9 +54,9 @@ public class TabsActivity extends TabActivity {
 		tabHost.addTab(spec);
 		
 		// Allergies
-		intent = new Intent().setClass(this, AllergiesActivity.class);
-		spec = tabHost.newTabSpec("allergies").setIndicator(getString(R.string.allergies), res.getDrawable(R.drawable.ic_tab_allergies)).setContent(intent);
-		tabHost.addTab(spec);
+//		intent = new Intent().setClass(this, AllergiesActivity.class);
+//		spec = tabHost.newTabSpec("allergies").setIndicator(getString(R.string.allergies), res.getDrawable(R.drawable.ic_tab_allergies)).setContent(intent);
+//		tabHost.addTab(spec);
 
 		// set the current tab ( default to  Home )
 		tabHost.setCurrentTab(0);
