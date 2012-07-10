@@ -1,18 +1,17 @@
 package edu.uconn.pha;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import edu.uconn.model.DemographicInfo;
 import edu.uconn.model.Height;
 import edu.uconn.model.Person;
 import edu.uconn.model.Weight;
-import android.app.Fragment;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
 	private static final String TAG = HomeActivity.class.getName();

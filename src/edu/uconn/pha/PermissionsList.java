@@ -16,15 +16,12 @@ import edu.uconn.model.Policy;
 public class PermissionsList extends BaseAdapter {
 	private static final String TAG = PermissionsList.class.getName();
 	private Policy policy;
-	private PermissionsActivity context;
+	private LayoutInflater inflater;
 
-	/**
-	 * @param context
-	 * @param policy
-	 */
 	public PermissionsList(Context context, Policy policy) {
 		this.policy = policy;
-		this.context = (PermissionsActivity) context;
+		inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		Log.v(TAG, "PermissionsList Constructed.");
 	}
 
@@ -48,9 +45,6 @@ public class PermissionsList extends BaseAdapter {
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) 
 	{			
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
 		View view = inflater.inflate(R.layout.permissions_role, parent, false);
 		TextView role = (TextView) view.findViewById(R.id.role);
 		role.setText(policy.getRole(position).getName());

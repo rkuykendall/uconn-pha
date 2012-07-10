@@ -11,20 +11,22 @@
         android:layout_weight="1"
         android:divider="@null"
         android:fadingEdgeLength="20dp"
-        android:requiresFadingEdge="vertical"
         android:transcriptMode="alwaysScroll" />
+    <!-- API 14+ android:requiresFadingEdge="vertical" -->
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="#cccccc" />
+        android:background="#333333" />
+    <!-- For light theme: #cccccc -->
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="50sp"
-        android:background="#eee"
+        android:background="#111111"
         android:orientation="vertical"
         android:padding="5dp" >
+        <!-- For light theme: #eeeeee -->
 
         <Button
             android:id="@+id/save"

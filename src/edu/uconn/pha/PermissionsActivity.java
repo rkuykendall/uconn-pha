@@ -26,7 +26,6 @@ public class PermissionsActivity extends Activity {
 		
         final ListView roles = (ListView) findViewById(R.id.roles);        
 
-
 		Log.d(TAG, "Start Permissions Activity." );
 
 		try {
@@ -47,19 +46,5 @@ public class PermissionsActivity extends Activity {
                 ServerConnection.setPolicy();
             }
         });		
-	}
-
-	public void setPermissionRead(int groupPosition, int childPosition,
-			boolean isChecked) {
-		policy.setPermissionRead(groupPosition, childPosition, isChecked);		
-	}
-
-	public void setPermissionWrite(int groupPosition, int childPosition,
-			boolean isChecked) {
-		policy.setPermissionWrite(groupPosition, childPosition, isChecked);
-	}
-
-	public Policy getPolicy() {
-		return policy;
 	}
 }

@@ -33,9 +33,10 @@
         android:layout_below="@id/role"
         android:layout_toLeftOf="@+id/wellness_write"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/read_permission" />
+    <!-- For later API: 30dip space -->
 
     <CheckBox
         android:id="@id/wellness_write"
@@ -44,7 +45,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/role"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/write_permission" />
 
@@ -67,7 +68,7 @@
         android:layout_below="@id/wellness_read"
         android:layout_toLeftOf="@+id/medications_write"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/read_permission" />
 
@@ -78,7 +79,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/wellness_write"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/write_permission" />
 
@@ -101,7 +102,7 @@
         android:layout_below="@id/medications_read"
         android:layout_toLeftOf="@+id/allergies_write"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/read_permission" />
 
@@ -112,7 +113,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/medications_write"
         android:focusable="false"
-        android:paddingLeft="30dip"
+        android:paddingLeft="40dip"
         android:paddingRight="10dip"
         android:text="@string/write_permission" />
 

@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="2dp"
                 android:text="@string/app_abbr_caps"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="100sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
