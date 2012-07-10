@@ -1,11 +1,11 @@
 package edu.uconn.pha;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
+import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -13,83 +13,118 @@ import android.widget.TextView;
 import edu.uconn.model.Permission;
 import edu.uconn.model.Policy;
 
-public class PermissionsList extends BaseExpandableListAdapter {
+public class PermissionsList extends BaseAdapter {
 	private static final String TAG = PermissionsList.class.getName();
 	private Policy policy;
 	private PermissionsActivity context;
 
+	/**
+	 * @param context
+	 * @param policy
+	 */
 	public PermissionsList(Context context, Policy policy) {
 		this.policy = policy;
 		this.context = (PermissionsActivity) context;
+		Log.v(TAG, "PermissionsList Constructed.");
 	}
 
 	@Override
-	public Object getChild(int groupPosition, int childPosition) 
+	public Object getItem(int position) {
+		return policy.getRole(position);
+	}
+
+	@Override
+	public int getCount() 
 	{   
-		return childPosition;
+		return policy.numRoles();
 	}
 
 	@Override
-	public long getChildId(int groupPosition, int childPosition) 
-	{
-		return childPosition;
+	public long getItemId(int position) 
+	{   
+		return position;
 	}
 
 	@Override
-	public View getChildView(final int groupPosition, final int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) 
-	{
-		// policy = context.getPolicy();
-		Permission permission = policy.getRole(groupPosition).getPermission(childPosition);
+	public View getView(final int position, View convertView, ViewGroup parent) 
+	{			
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		// Initialize 
-		View view = null;
-		// TODO: Fix convertview in PermissionsList
-		// Convertview causes check boxes to
-		// randomly check and uncheck.
-//		if( convertView != null ) {
-//			view = convertView;
-//		} else {
-			view = context.getLayoutInflater().inflate(R.layout.permissions_object, parent, false); 
-//		}
+		View view = inflater.inflate(R.layout.permissions_role, parent, false);
+		TextView role = (TextView) view.findViewById(R.id.role);
+		role.setText(policy.getRole(position).getName());
 
-		// Permission label
-		TextView permissionLabel = (TextView) view.findViewById( R.id.permission );
-		permissionLabel.setText(permission.getName());
 
-		// Read Label
-		TextView read = (TextView) view.findViewById( R.id.read );
-		read.setText( "View" );
+		CheckBox cb;
+		Permission permission;
 
-		// Read Checkbox
-		CheckBox cbr = (CheckBox) view.findViewById( R.id.checkread );
-		cbr.setChecked( permission.canRead() );
-		// cbr.setFocusableInTouchMode(false);
-		cbr.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		permission = policy.getRole(position).getPermission(0);
+		cb = (CheckBox) view.findViewById( R.id.wellness_read );
+		cb.setChecked( permission.canRead() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
 			{
-                Log.d(TAG, "--- Read position: " +groupPosition+"/"+childPosition+" "+isChecked+" ---");
-				policy.setPermissionRead(groupPosition, childPosition, isChecked);
-				context.setPermissionRead(groupPosition, childPosition, isChecked);
+              Log.d(TAG, "--- Read position: " +position+" "+isChecked+" ---");
+				policy.setPermissionRead(position, 0, isChecked);
+			}
+		});
+		cb = (CheckBox) view.findViewById( R.id.wellness_write );
+		cb.setChecked( permission.canWrite() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+			{
+              Log.d(TAG, "--- Write position: " +position+" "+isChecked+" ---");
+				policy.setPermissionWrite(position, 0, isChecked);
 			}
 		});
 
 
-		// Write Label
-		TextView write = (TextView) view.findViewById( R.id.write );
-		write.setText( "Update" );
-
-		// Write Checkbox
-		CheckBox cbw = (CheckBox) view.findViewById( R.id.checkwrite );
-		cbw.setChecked( permission.canWrite() );
-		cbw.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		permission = policy.getRole(position).getPermission(1);
+		cb = (CheckBox) view.findViewById( R.id.medications_read );
+		cb.setChecked( permission.canRead() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
 			{
-                Log.d(TAG, "--- Write position: " +groupPosition+"/"+childPosition+" "+isChecked+" ---");
-				policy.setPermissionWrite(groupPosition, childPosition, isChecked);
-				context.setPermissionWrite(groupPosition, childPosition, isChecked);
+              Log.d(TAG, "--- Read position: " +position+" "+isChecked+" ---");
+				policy.setPermissionRead(position, 1, isChecked);
+			}
+		});
+		cb = (CheckBox) view.findViewById( R.id.medications_write );
+		cb.setChecked( permission.canWrite() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+			{
+              Log.d(TAG, "--- Write position: " +position+" "+isChecked+" ---");
+				policy.setPermissionWrite(position, 1, isChecked);
+			}
+		});
+
+
+
+		permission = policy.getRole(position).getPermission(2);
+		cb = (CheckBox) view.findViewById( R.id.allergies_read );
+		cb.setChecked( permission.canRead() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+			{
+              Log.d(TAG, "--- Read position: " +position+" "+isChecked+" ---");
+				policy.setPermissionRead(position, 2, isChecked);
+			}
+		});
+		cb = (CheckBox) view.findViewById( R.id.allergies_write );
+		cb.setChecked( permission.canWrite() );
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+			{
+              Log.d(TAG, "--- Write position: " +position+" "+isChecked+" ---");
+				policy.setPermissionWrite(position, 2, isChecked);
 			}
 		});
 
@@ -97,62 +132,13 @@ public class PermissionsList extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public int getChildrenCount(int groupPosition) 
-	{   
-		return policy.getRole(groupPosition).numPermissions();
+	public boolean isEnabled(int position) {
+		return false;
 	}
-
-	@Override
-	public Object getGroup(int groupPosition) {
-		return groupPosition;
-	}
-
-	@Override
-	public int getGroupCount() 
-	{   
-		return policy.numRoles();
-	}
-
-	@Override
-	public long getGroupId(int groupPosition) 
-	{   
-		return groupPosition;
-	}
-
-	@Override
-	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) 
-	{			
-		// New TextView
-		TextView tv = new TextView(context);
-
-		// Design
-		tv.setPadding(10, 10, 10, 10); 
-
-		if ( isExpanded ) {
-			tv.setBackgroundColor(Color.rgb(20,20,20));
-			tv.setTextColor(Color.WHITE);
-		} else {
-			tv.setBackgroundColor(Color.rgb(10,10,10));
-			tv.setTextColor(Color.GRAY);
-		}
-
-		// Content
-		tv.setText(policy.getRole(groupPosition).getName());
-
-		// Return
-		return tv;
-	}
-
+	
 	@Override
 	public boolean hasStableIds()
 	{
 		return true;
 	}
-
-	@Override
-	public boolean isChildSelectable(int groupPosition, int childPosition) 
-	{
-		return false;
-	}     
 }

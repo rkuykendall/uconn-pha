@@ -2,15 +2,17 @@ package edu.uconn.pha;
 
 import org.json.JSONException;
 
-import android.app.ExpandableListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ListView;
 import edu.uconn.model.Policy;
 import edu.uconn.serverclient.ServerConnection;
 
-public class PermissionsActivity extends ExpandableListActivity {
+public class PermissionsActivity extends Activity {
 	private static final String TAG = PermissionsActivity.class.getName();
 	private PermissionsList adapter;
 	Policy policy;
@@ -20,41 +22,31 @@ public class PermissionsActivity extends ExpandableListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setTitle(R.string.permissions);
+		setContentView(R.layout.permissions_activity);
+		
+        final ListView roles = (ListView) findViewById(R.id.roles);        
 
+
+		Log.d(TAG, "Start Permissions Activity." );
 
 		try {
 			policy = ServerConnection.getPolicy();
 		} catch (JSONException e) {
+			// TODO: Catch JSON exception properly.
 			policy = new Policy();
 		}
-		
-		Log.d(TAG, "Testing Logs" );
 
 		// use a data adapter to map data to the list view layout
 		adapter = new PermissionsList(this, policy);
-		setListAdapter(adapter);
+		roles.setAdapter(adapter);
 
-		// Expand Groups
-		getExpandableListView().setGroupIndicator(null);
-		for(int i = 0; i < getExpandableListAdapter().getGroupCount(); i++)
-		{
-			getExpandableListView().expandGroup(i);
-		}
-	}
-
-	public void onContentChanged() {
-		super.onContentChanged();
-		Log.d(TAG, "onContentChanged");
-	}
-
-	public boolean onChildClick(ExpandableListView parent, View v, 
-			int groupPosition, int childPosition,long id) {
-
-		Log.e(TAG, "onChildClick: v.getTag: " + v.getTag()
-				+ " groupPos: " + groupPosition
-				+ " childPosition: " + childPosition
-				+ " rowId: " + id);
-		return false;
+		final Button save = (Button) findViewById(R.id.save);        
+        save.setOnClickListener(new OnClickListener()  {
+            @Override
+            public void onClick(View v)  {
+                ServerConnection.setPolicy();
+            }
+        });		
 	}
 
 	public void setPermissionRead(int groupPosition, int childPosition,

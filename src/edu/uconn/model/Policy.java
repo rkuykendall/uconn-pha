@@ -80,4 +80,8 @@ public class Policy extends HealthItem {
 	public Role getRole(int position) {
 		return roles.get(position);
 	}
+
+	public void addRole(Role role) {
+		roles.add(role);
+	}
 }

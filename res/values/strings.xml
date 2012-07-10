@@ -131,4 +131,7 @@
     <string name="ui_filler_list_item">List Item Text</string>
     <string name="ui_filler_list_item_button_image">Content description missing.</string>
     <string name="ui_filler_list_item_arrow">list_item_arrow</string>
+    <string name="read_permission">View</string>
+    <string name="write_permission">Update</string>
+    <string name="Save">save</string>
 </resources>

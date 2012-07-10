@@ -85,17 +85,17 @@ public class ServerConnection {
 		String response = "{\"Roles\":[{" +
 				"\"Name\":\"Primary care physician\"," +
 				"\"Permissions\":[" +
-				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}," +
+				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":false}," +
+				"{\"Name\":\"Medications\",\"Write\":false,\"Read\":true}," +
+				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":false}]}," +
 				"{\"Name\":\"Clinical Pharmacist\",\"Permissions\":[" +
-				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}," +
+				"{\"Name\":\"Wellness\",\"Write\":false,\"Read\":true}," +
+				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":false}," +
+				"{\"Name\":\"Allergies\",\"Write\":false,\"Read\":true}]}," +
 				"{\"Name\":\"Psychiatrist\",\"Permissions\":[" +
-				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Medications\",\"Write\":true,\"Read\":true}," +
-				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":true}]}" +
+				"{\"Name\":\"Wellness\",\"Write\":true,\"Read\":false}," +
+				"{\"Name\":\"Medications\",\"Write\":false,\"Read\":true}," +
+				"{\"Name\":\"Allergies\",\"Write\":true,\"Read\":false}]}" +
 				"],\"Key\":\"KEYKEYKE-YKEY-KEYK-EYKE-YKEYKEYKEYKE\"}";
 		
 		JSONObject json = ServerConnectionHelper.toJSONObject(response);
@@ -337,6 +337,17 @@ public class ServerConnection {
 
 		return sb.toString();
 
+	}
+
+	public static void setPolicy() {
+		try {
+//			Log.v(TAG, "Old Policy: "+policy.toJSONObject().toString());
+//			policy = setPolicy;
+			Log.v(TAG, "Policy: "+policy.toJSONObject().toString());
+		} catch (JSONException e) {
+			// TODO Remove this debug stuff.
+			e.printStackTrace();
+		}
 	}
 }
 

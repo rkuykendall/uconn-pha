@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/role"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/ui_filler_list_item" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/wellness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/role"
+        android:layout_toLeftOf="@+id/wellness_read"
+        android:padding="8dip"
+        android:text="@string/wellness_diary"
+        android:textSize="16dp" >
+    </TextView>
+
+    <CheckBox
+        android:id="@id/wellness_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/role"
+        android:layout_toLeftOf="@+id/wellness_write"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/read_permission" />
+
+    <CheckBox
+        android:id="@id/wellness_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/role"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/write_permission" />
+
+    <TextView
+        android:id="@+id/medications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/wellness"
+        android:layout_toLeftOf="@+id/medications_read"
+        android:padding="8dip"
+        android:text="@string/medications"
+        android:textSize="16dp" >
+    </TextView>
+
+    <CheckBox
+        android:id="@id/medications_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wellness_read"
+        android:layout_toLeftOf="@+id/medications_write"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/read_permission" />
+
+    <CheckBox
+        android:id="@id/medications_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/wellness_write"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/write_permission" />
+
+    <TextView
+        android:id="@+id/allergies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/medications"
+        android:layout_toLeftOf="@+id/allergies_read"
+        android:padding="8dip"
+        android:text="@string/allergies"
+        android:textSize="16dp" >
+    </TextView>
+
+    <CheckBox
+        android:id="@id/allergies_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medications_read"
+        android:layout_toLeftOf="@+id/allergies_write"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/read_permission" />
+
+    <CheckBox
+        android:id="@id/allergies_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/medications_write"
+        android:focusable="false"
+        android:paddingLeft="30dip"
+        android:paddingRight="10dip"
+        android:text="@string/write_permission" />
+
+</RelativeLayout>
