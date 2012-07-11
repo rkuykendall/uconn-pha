@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:fillViewport="true" >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-        <include android:id="@+id/home_activity_healthvault_header" layout="@layout/section_header" />
+
+        <include
+            android:id="@+id/home_activity_healthvault_header"
+            layout="@layout/section_header" />
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -15,6 +20,9 @@
             android:paddingBottom="10dp"
             android:paddingLeft="4dp"
             android:paddingTop="10dp" >
+
+            <!-- For light theme: #eeeeee -->
+
             <ImageView
                 android:id="@+id/home_activity_user_pic"
                 android:layout_width="wrap_content"
@@ -22,9 +30,10 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="4dp"
-                android:contentDescription="@string/person_photo_description"
                 android:layout_marginRight="15dp"
+                android:contentDescription="@string/person_photo_description"
                 android:src="@drawable/profile_male" />
+
             <TextView
                 android:id="@+id/home_activity_name_label"
                 android:layout_width="wrap_content"
@@ -33,6 +42,7 @@
                 android:layout_alignLeft="@+id/home_activity_user_name"
                 android:text="@string/name"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
+
             <TextView
                 android:id="@+id/home_activity_user_name"
                 android:layout_width="wrap_content"
@@ -42,24 +52,30 @@
                 android:text="@string/person_filler_name"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="#313031"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginBottom="4dp"
+            android:background="#333333" />
+        <!-- For light theme: #cccccc -->
+
         <TableLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="4dp" >
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/birthdate"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -67,10 +83,12 @@
                     android:text="@string/gender"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp" >
+
                 <TextView
                     android:id="@+id/home_activity_user_birthdate"
                     android:layout_width="fill_parent"
@@ -78,6 +96,7 @@
                     android:layout_weight="1"
                     android:text="@string/person_filler_birthdate"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
                 <TextView
                     android:id="@+id/home_activity_user_gender"
                     android:layout_width="fill_parent"
@@ -86,15 +105,18 @@
                     android:text="@string/person_filler_gender"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/race"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -102,10 +124,12 @@
                     android:text="@string/blood_type"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp" >
+
                 <TextView
                     android:id="@+id/home_activity_user_race"
                     android:layout_width="fill_parent"
@@ -113,6 +137,7 @@
                     android:layout_weight="1"
                     android:text="@string/person_filler_race"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
                 <TextView
                     android:id="@+id/home_activity_user_blood_type"
                     android:layout_width="fill_parent"
@@ -121,15 +146,18 @@
                     android:text="@string/person_filler_blood_type"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/height"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -137,10 +165,12 @@
                     android:text="@string/weight"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </TableRow>
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp" >
+
                 <TextView
                     android:id="@+id/home_activity_user_height"
                     android:layout_width="fill_parent"
@@ -148,6 +178,7 @@
                     android:layout_weight="1"
                     android:text="@string/person_filler_weight"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
                 <TextView
                     android:id="@+id/home_activity_user_weight"
                     android:layout_width="fill_parent"
@@ -158,4 +189,5 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
-</Fragment>
+
+</ScrollView>
