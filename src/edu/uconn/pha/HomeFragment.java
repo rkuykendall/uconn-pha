@@ -17,7 +17,7 @@ import edu.uconn.model.Weight;
 import edu.uconn.serverclient.ServerConnection;
 
 public class HomeFragment extends Fragment {
-	private static final String TAG = HomeActivity.class.getName();
+	private static final String TAG = HomeFragment.class.getName();
 
 	private DemographicInfo basicDemographicInfo;
 	private Height height;
