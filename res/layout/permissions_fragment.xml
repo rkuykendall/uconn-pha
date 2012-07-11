@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/roles"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:fadingEdgeLength="20dp"
+        android:transcriptMode="alwaysScroll" />
+    <!-- API 14+ android:requiresFadingEdge="vertical" -->
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#333333" />
+    <!-- For light theme: #cccccc -->
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50sp"
+        android:background="#111111"
+        android:orientation="vertical"
+        android:padding="5dp" >
+        <!-- For light theme: #eeeeee -->
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/save" />
+    </RelativeLayout>
+
+</LinearLayout>
