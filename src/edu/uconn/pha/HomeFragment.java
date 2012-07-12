@@ -3,20 +3,22 @@ package edu.uconn.pha;
 import org.json.JSONException;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.actionbarsherlock.app.SherlockFragment;
+
 import edu.uconn.model.DemographicInfo;
 import edu.uconn.model.Height;
 import edu.uconn.model.Person;
 import edu.uconn.model.Weight;
 import edu.uconn.serverclient.ServerConnection;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends SherlockFragment {
 	private static final String TAG = HomeFragment.class.getName();
 
 	private DemographicInfo basicDemographicInfo;
