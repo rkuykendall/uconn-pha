@@ -72,7 +72,7 @@
     <string name="strength">Strength</string>
     <string name="to">To</string>
     <string name="weight">Weight</string>
-    <string name="wellness_diary">Wellness Diary</string>
+    <string name="wellness_diary">Wellness</string>
     <string name="wellness_diary_form_instructions">Use the sliders to indicate your levels.</string>
     <string name="wellness_diary_report_instructions">Customize your wellness report below.</string>
     <string name="wellness_entry_deleted">Entry successfully deleted.</string>

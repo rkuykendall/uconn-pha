@@ -9,6 +9,7 @@ import android.util.Log;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class TabsActivity extends SherlockFragmentActivity {
 	private static final String TAG = TabsActivity.class.getName();
@@ -16,7 +17,7 @@ public class TabsActivity extends SherlockFragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_activity);
+		setContentView(R.layout.tabs_activity);
 		setTitle(R.string.app_name);
 
 		Log.v(TAG, "Started Home Activity.");
@@ -25,6 +26,7 @@ public class TabsActivity extends SherlockFragmentActivity {
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
 		// bar.setDisplayHomeAsUpEnabled(true);
+		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayShowTitleEnabled(true);
 		bar.addTab(bar
 				.newTab()
@@ -68,21 +70,6 @@ public class TabsActivity extends SherlockFragmentActivity {
 		if (savedInstanceState != null) {
 			bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
 		}
-
-		//		com.actionbarsherlock.app.ActionBar.Tab tab;
-		//		tab = getSupportActionBar().newTab();
-		//		tab.setText("MyTab");
-		//		tab.setTabListener(this);
-		//		getSupportActionBar().addTab(tab);
-
-		//		String[] tabs = { "Home", "Wellness", "Permissions", "Medications" };
-		//
-		//		for (int i = 0; i < tabs.length; i++) {
-		//			tab = getSupportActionBar().newTab();
-		//			tab.setText(tabs[i]);
-		//			tab.setTabListener(this);
-		//			getSupportActionBar().addTab(tab);
-		//		}
 	}
 
 	public class TabListener<T extends Fragment> implements
@@ -138,6 +125,18 @@ public class TabsActivity extends SherlockFragmentActivity {
 
 		@Override
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) 
+	{
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			getActionBar().setSelectedNavigationItem(0);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }
