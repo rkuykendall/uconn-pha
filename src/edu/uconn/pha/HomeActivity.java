@@ -24,20 +24,32 @@ public class HomeActivity extends SherlockFragmentActivity {
 		ActionBar bar = getSupportActionBar();
 		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
-		bar.setDisplayHomeAsUpEnabled(true);
+		// bar.setDisplayHomeAsUpEnabled(true);
 		bar.setDisplayShowTitleEnabled(true);
 		bar.addTab(bar
 				.newTab()
-				.setText("Home")
+				.setText(R.string.home)
 				.setTabListener(
-						new TabListener<HomeFragment>(this, "home",
+						new TabListener<HomeFragment>(this, this.getString(R.string.home),
 								HomeFragment.class, null)));
 		bar.addTab(bar
 				.newTab()
-				.setText("Permissions")
+				.setText(R.string.wellness_diary)
 				.setTabListener(
-						new TabListener<PermissionsFragment>(this, "permissions",
+						new TabListener<WellnessFragment>(this, this.getString(R.string.wellness_diary),
+								WellnessFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.permissions)
+				.setTabListener(
+						new TabListener<PermissionsFragment>(this, this.getString(R.string.permissions),
 								PermissionsFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.medications)
+				.setTabListener(
+						new TabListener<MedicationsFragment>(this, this.getString(R.string.medications),
+								MedicationsFragment.class, null)));
 
 		if (savedInstanceState != null) {
 			bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));

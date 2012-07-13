@@ -6,9 +6,6 @@ import java.util.Iterator;
 
 import org.json.JSONException;
 
-import edu.uconn.model.Medication;
-import edu.uconn.serverclient.ServerConnection;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +20,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RxOtcActivity extends Activity {
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+
+import edu.uconn.model.Medication;
+import edu.uconn.serverclient.ServerConnection;
+
+public class RxOtcActivity extends SherlockFragmentActivity {
 
 	private static final String TAG = RxOtcActivity.class.getName();
 
@@ -48,14 +52,22 @@ public class RxOtcActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rx_otc_activity);
-		setTitle(R.string.medications);
-
+		
 		// determine if we are loading prescriptions or OTC drugs
 		prescribed = null;
 		extras = getIntent().getExtras();
 		if(extras != null) {
 			prescribed = extras.getBoolean("Prescribed");
 		}
+
+		if(prescribed.booleanValue()) {
+			setTitle(R.string.prescription_drugs);
+		} else {
+			setTitle(R.string.over_the_counter_drugs);
+		}
+
+		ActionBar bar = getSupportActionBar();
+		bar.setDisplayHomeAsUpEnabled(true);
 
 		// retrieve an instance of the list view control
 		listView = (ListView) findViewById(R.id.rx_otc_activity_list_view);
@@ -179,4 +191,22 @@ public class RxOtcActivity extends Activity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) 
+	{
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// // app icon in action bar clicked; go home
+			// Intent intent = new Intent(this, HomeActivity.class);
+			// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			// startActivity(intent);
+			// return true;
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 }
