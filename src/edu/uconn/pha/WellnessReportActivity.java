@@ -9,10 +9,6 @@ import java.util.Date;
 
 import org.json.JSONException;
 
-import edu.uconn.model.ODLQuery;
-import edu.uconn.serverclient.ServerConnection;
-
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -26,7 +22,13 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WellnessReportActivity extends Activity {
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+
+import edu.uconn.model.ODLQuery;
+import edu.uconn.serverclient.ServerConnection;
+
+public class WellnessReportActivity extends SherlockFragmentActivity {
 
 	private static final String TAG = WellnessReportActivity.class.getName();
 
@@ -52,6 +54,7 @@ public class WellnessReportActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wellness_activity_report);
 		setTitle(R.string.wellness_diary);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// set the ODL selection header text
 		textView = (TextView) findViewById(R.id.wellness_activity_report_odls_header);
@@ -238,6 +241,18 @@ public class WellnessReportActivity extends Activity {
 		}
 		if(button == endDateButton) {
 			button.setText(formatDateValue(endMonth) + "-" + formatDateValue(endDay) + "-" + formatDateValue(endYear));
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) 
+	{
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }

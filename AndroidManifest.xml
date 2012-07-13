@@ -36,7 +36,7 @@
             android:name=".WellnessReportActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".AlarmsActivity"
+            android:name=".AlarmsFragment"
             android:label="@string/app_name" />
         <activity
             android:name=".RxOtcActivity"
@@ -45,7 +45,7 @@
             android:name=".RxOtcFormActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".AllergiesActivity"
+            android:name=".AllergiesFragment"
             android:label="@string/app_name" />
         <activity
             android:name=".ImageViewerActivity"

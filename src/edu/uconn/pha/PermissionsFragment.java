@@ -20,9 +20,7 @@ public class PermissionsFragment extends Fragment {
 	Policy policy;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	        Bundle savedInstanceState) {
-	 
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	    View view = inflater.inflate(R.layout.permissions_fragment, container, false);
         final ListView roles = (ListView) view.findViewById(R.id.roles);        
 

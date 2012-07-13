@@ -2,9 +2,6 @@ package edu.uconn.pha;
 
 import org.json.JSONException;
 
-import edu.uconn.model.ODL;
-import edu.uconn.serverclient.ServerConnection;
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +13,13 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WellnessFormActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+
+import edu.uconn.model.ODL;
+import edu.uconn.serverclient.ServerConnection;
+
+public class WellnessFormActivity extends SherlockFragmentActivity implements SeekBar.OnSeekBarChangeListener {
 
 	private static final String TAG = WellnessFormActivity.class.getName();
 
@@ -34,6 +37,7 @@ public class WellnessFormActivity extends Activity implements SeekBar.OnSeekBarC
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wellness_activity_form);
 		setTitle(R.string.wellness_diary);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// set the energy seek bar label text
 		textView = (TextView) findViewById(R.id.wellness_activity_form_energy_label);
@@ -281,4 +285,17 @@ public class WellnessFormActivity extends Activity implements SeekBar.OnSeekBarC
 		// set the seek bar number based on progress
 		textView.setText(Integer.toString(progress));
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) 
+	{
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 }

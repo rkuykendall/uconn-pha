@@ -40,6 +40,13 @@ public class TabsActivity extends SherlockFragmentActivity {
 								WellnessFragment.class, null)));
 		bar.addTab(bar
 				.newTab()
+				.setText(R.string.alarms)
+				.setTabListener(
+						new TabListener<AlarmsFragment>(this, this.getString(R.string.alarms),
+								AlarmsFragment.class, null)));
+
+		bar.addTab(bar
+				.newTab()
 				.setText(R.string.permissions)
 				.setTabListener(
 						new TabListener<PermissionsFragment>(this, this.getString(R.string.permissions),
@@ -50,6 +57,13 @@ public class TabsActivity extends SherlockFragmentActivity {
 				.setTabListener(
 						new TabListener<MedicationsFragment>(this, this.getString(R.string.medications),
 								MedicationsFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.allergies)
+				.setTabListener(
+						new TabListener<AllergiesFragment>(this, this.getString(R.string.allergies),
+								AllergiesFragment.class, null)));
+
 
 		if (savedInstanceState != null) {
 			bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));

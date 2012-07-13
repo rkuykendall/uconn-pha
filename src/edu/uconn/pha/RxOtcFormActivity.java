@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import org.json.JSONException;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -17,11 +16,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import edu.uconn.listeners.CustomOnItemSelectedListener;
 import edu.uconn.model.Medication;
 import edu.uconn.serverclient.ServerConnection;
 
-public class RxOtcFormActivity extends Activity {
+public class RxOtcFormActivity extends SherlockFragmentActivity {
 	
 	private static final String TAG = RxOtcFormActivity.class.getName();
 	
@@ -45,10 +49,9 @@ public class RxOtcFormActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prescriptions_activity_form);
-        setTitle(R.string.prescription_drugs);
         
         //TODO CLEAN UP THIS FILE, REMOVE THE PRESCRIPTIONS_ACTIVITY_FORM XML (USED FOR DEMO), AND STREAMLINE INTO NEW CODE
-        
+		
         Bundle extras = getIntent().getExtras();
         if(extras != null);
         {
@@ -56,6 +59,13 @@ public class RxOtcFormActivity extends Activity {
         	// Was: prescribed = new Boolean(extras.getBoolean("Prescribed"));
         	listIndex = extras.getInt("GlobalIndex", -1);
         }
+        
+		if(prescribed.booleanValue()) {
+			setTitle(R.string.prescription_drugs);
+		} else {
+			setTitle(R.string.over_the_counter_drugs);
+		}
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // get the current date for each date listener
 		calendar = Calendar.getInstance();
@@ -421,6 +431,19 @@ public class RxOtcFormActivity extends Activity {
 		}
 		if(button == endButton) {
 			button.setText(formatDateValue(endMonth) + "-" + formatDateValue(endDay) + "-" + formatDateValue(endYear));
+		}
+	}
+	
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) 
+	{
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }
