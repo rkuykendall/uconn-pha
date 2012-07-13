@@ -1,64 +1,129 @@
 package edu.uconn.pha;
 
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.widget.TabHost;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
-public class TabsActivity extends TabActivity {
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+public class TabsActivity extends SherlockFragmentActivity {
+	private static final String TAG = TabsActivity.class.getName();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tabs_activity);
+		setContentView(R.layout.home_activity);
 		setTitle(R.string.app_name);
 
-		// resource object to get drawables
-		Resources res = getResources();
-		// the activity TabHost
-		TabHost tabHost = getTabHost();
-		// reusable TabSpec for each tab
-		TabHost.TabSpec spec;
-		// reusable intent for each tab
-		Intent intent;
+		Log.v(TAG, "Started Home Activity.");
 
-		// === Creating Tabs
-		// 1) Create an intent to launch an activity for the tab (to be reused)
-		// 2) Initialize a TabSpec for each tab and add it to the TabHost
-		// 3) Add the tabSpec to the tabHost
+		ActionBar bar = getSupportActionBar();
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		bar.setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
+		// bar.setDisplayHomeAsUpEnabled(true);
+		bar.setDisplayShowTitleEnabled(true);
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.home)
+				.setTabListener(
+						new TabListener<HomeFragment>(this, this.getString(R.string.home),
+								HomeFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.wellness_diary)
+				.setTabListener(
+						new TabListener<WellnessFragment>(this, this.getString(R.string.wellness_diary),
+								WellnessFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.permissions)
+				.setTabListener(
+						new TabListener<PermissionsFragment>(this, this.getString(R.string.permissions),
+								PermissionsFragment.class, null)));
+		bar.addTab(bar
+				.newTab()
+				.setText(R.string.medications)
+				.setTabListener(
+						new TabListener<MedicationsFragment>(this, this.getString(R.string.medications),
+								MedicationsFragment.class, null)));
 
-		// Home
-		intent = new Intent().setClass(this, HomeActivity.class);
-		spec = tabHost.newTabSpec("home").setIndicator(getString(R.string.home), res.getDrawable(R.drawable.ic_tab_home)).setContent(intent);
-		tabHost.addTab(spec);
-		
-		// Wellness
-		intent = new Intent().setClass(this, WellnessActivity.class);
-		spec = tabHost.newTabSpec("wellness").setIndicator(getString(R.string.wellness_diary), res.getDrawable(R.drawable.ic_tab_wellness)).setContent(intent);
-		tabHost.addTab(spec);
-		
-		// Permissions
-		intent = new Intent().setClass(this, PermissionsActivity.class);
-		spec = tabHost.newTabSpec("permissions").setIndicator(getString(R.string.permissions), res.getDrawable(R.drawable.ic_tab_permissions)).setContent(intent);
-		tabHost.addTab(spec);
+		if (savedInstanceState != null) {
+			bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
+		}
 
-		// Alarms
-//		intent = new Intent().setClass(this, AlarmsActivity.class);
-//		spec = tabHost.newTabSpec("alarms").setIndicator(getString(R.string.alarms), res.getDrawable(R.drawable.ic_tab_alarms)).setContent(intent);
-//		tabHost.addTab(spec);
+		//		com.actionbarsherlock.app.ActionBar.Tab tab;
+		//		tab = getSupportActionBar().newTab();
+		//		tab.setText("MyTab");
+		//		tab.setTabListener(this);
+		//		getSupportActionBar().addTab(tab);
 
-		// Medications
-		intent = new Intent().setClass(this, MedicationsActivity.class);
-		spec = tabHost.newTabSpec("medications").setIndicator(getString(R.string.medications), res.getDrawable(R.drawable.ic_tab_medications)).setContent(intent);
-		tabHost.addTab(spec);
-		
-		// Allergies
-//		intent = new Intent().setClass(this, AllergiesActivity.class);
-//		spec = tabHost.newTabSpec("allergies").setIndicator(getString(R.string.allergies), res.getDrawable(R.drawable.ic_tab_allergies)).setContent(intent);
-//		tabHost.addTab(spec);
+		//		String[] tabs = { "Home", "Wellness", "Permissions", "Medications" };
+		//
+		//		for (int i = 0; i < tabs.length; i++) {
+		//			tab = getSupportActionBar().newTab();
+		//			tab.setText(tabs[i]);
+		//			tab.setTabListener(this);
+		//			getSupportActionBar().addTab(tab);
+		//		}
+	}
 
-		// set the current tab ( default to  Home )
-		tabHost.setCurrentTab(0);
+	public class TabListener<T extends Fragment> implements
+	ActionBar.TabListener {
+		private final FragmentActivity mActivity;
+		private final String mTag;
+		private final Class<T> mClass;
+		private final Bundle mArgs;
+		private Fragment mFragment;
+
+		public TabListener(FragmentActivity activity, String tag, Class<T> clz, Bundle args) {
+			mActivity = activity;
+			mTag = tag;
+			mClass = clz;
+			mArgs = args;
+			FragmentTransaction ft = mActivity.getSupportFragmentManager()
+					.beginTransaction();
+
+			// Check to see if we already have a fragment for this tab, probably
+			// from a previously saved state. If so, deactivate it, because our
+			// initial state is that a tab isn't shown.
+			mFragment = mActivity.getSupportFragmentManager().findFragmentByTag(mTag);
+			if (mFragment != null && !mFragment.isDetached()) {
+				ft.detach(mFragment);
+			}
+		}
+
+		@Override
+		public void onTabSelected(Tab tab, FragmentTransaction ft) {
+			ft = mActivity.getSupportFragmentManager().beginTransaction();
+
+			if (mFragment == null) {
+				mFragment = Fragment.instantiate(mActivity, mClass.getName(), mArgs);
+				ft.add(android.R.id.content, mFragment, mTag);
+				ft.commit();
+			} else {
+				ft.attach(mFragment);
+				ft.commit();
+			}
+		}
+
+		@Override
+		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+			ft = mActivity.getSupportFragmentManager()
+					.beginTransaction();
+
+			if (mFragment != null) {
+				ft.detach(mFragment);
+				ft.commitAllowingStateLoss();
+			}
+
+		}
+
+		@Override
+		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		}
 	}
 }

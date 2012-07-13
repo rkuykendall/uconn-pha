@@ -44,8 +44,7 @@ public class SplashActivity extends Activity {
 					Log.i(TAG, "Loading Complete :: HealthVault Data");
 
 					// start the tabs activity and finish the splash activity
-//					startActivity(new Intent(SplashActivity.this, TabsActivity.class));
-					startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+					startActivity(new Intent(SplashActivity.this, TabsActivity.class));
 					finish();
 
 				} catch (JSONException e) {
