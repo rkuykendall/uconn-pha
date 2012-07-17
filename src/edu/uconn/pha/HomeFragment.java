@@ -34,6 +34,10 @@ public class HomeFragment extends SherlockFragment {
 	 
 	    View view = inflater.inflate(R.layout.home_fragment, container, false);
 
+	    // set the HealthVault info header text
+	    textView = (TextView) view.findViewById(R.id.home_activity_healthvault_header);
+	    textView.setText(R.string.my_healthvault_info);
+
 		// retrieve person data
 		try {
 			person = ServerConnection.getPersonInfo();

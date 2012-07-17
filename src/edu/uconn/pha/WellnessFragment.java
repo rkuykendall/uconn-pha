@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.json.JSONException;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -38,24 +40,23 @@ public class WellnessFragment extends SherlockFragment {
 	private ListView listView;
 	private RelativeLayout relativeLayout;
 	private TextView textView;
-	private View view;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	    View view = inflater.inflate(R.layout.wellness_activity, container, false);
+	    View activityView = inflater.inflate(R.layout.wellness_activity, container, false);
 
 		// retrieve an instance of the list view control
-		listView = (ListView) view.findViewById(R.id.wellness_activity_list_view);
+		listView = (ListView) activityView.findViewById(R.id.wellness_activity_list_view);
 
 		// initialize the list view header
-		view = inflater.inflate(R.layout.wellness_activity_header, null);
+		View headerView = inflater.inflate(R.layout.wellness_activity_header, null);
 
 		// set the create entry header text
-		textView = (TextView) view.findViewById(R.id.wellness_activity_header_create_entry);
+		textView = (TextView) headerView.findViewById(R.id.wellness_activity_header_create_entry);
 		textView.setText(R.string.create_entry);
 
 		// initialize the add new entry "button" and listener
-		relativeLayout = (RelativeLayout) view.findViewById(R.id.wellness_activity_header_add_button);
+		relativeLayout = (RelativeLayout) headerView.findViewById(R.id.wellness_activity_header_add_button);
 		imageView = (ImageView) relativeLayout.findViewById(R.id.included_list_item_button_image);
 		imageView.setImageResource(R.drawable.ic_add);
 		textView = (TextView) relativeLayout.findViewById(R.id.included_list_item_button_text);
@@ -69,11 +70,11 @@ public class WellnessFragment extends SherlockFragment {
 		});
 
 		// set the create report header text
-		textView = (TextView) view.findViewById(R.id.wellness_activity_header_create_report);
+		textView = (TextView) headerView.findViewById(R.id.wellness_activity_header_create_report);
 		textView.setText(R.string.create_report);
 
 		// initialize the generate report "button" and listener
-		relativeLayout = (RelativeLayout) view.findViewById(R.id.wellness_activity_header_generate_button);
+		relativeLayout = (RelativeLayout) headerView.findViewById(R.id.wellness_activity_header_generate_button);
 		imageView = (ImageView) relativeLayout.findViewById(R.id.included_list_item_button_image);
 		imageView.setImageResource(R.drawable.ic_graphs);
 		textView = (TextView) relativeLayout.findViewById(R.id.included_list_item_button_text);
@@ -87,16 +88,16 @@ public class WellnessFragment extends SherlockFragment {
 		});
 
 		// set the diary entries header text
-		textView = (TextView) view.findViewById(R.id.wellness_activity_header_diary_entries);
+		textView = (TextView) headerView.findViewById(R.id.wellness_activity_header_diary_entries);
 		textView.setText(R.string.my_entries);
 
 		// add the header view to the list view
-		listView.addHeaderView(view, null, false);
+		listView.addHeaderView(headerView, null, false);
 
 		// populate and display the wellness diary entry list
 		generateODLList();
 		
-		return view;
+		return activityView;
 	}
 
 	private void generateODLList() {
@@ -108,6 +109,7 @@ public class WellnessFragment extends SherlockFragment {
 
 			// add the entries the the list
 			while(i.hasNext()) {
+				Log.v(TAG, "Iterate.");
 				ODL odl = i.next();				
 				odlDateList.add("Diary Entry: " + odl.getDate());
 			}
@@ -131,25 +133,24 @@ public class WellnessFragment extends SherlockFragment {
 		});
 	}
 
-	// TODO: Fix recording ODLs
-//	@Override
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {		
-//		if(resultCode == RESULT_OK) {
-//			switch(requestCode) {
-//			case EDITABLE_REQUEST_CODE:
-//				// regenerate ODL list and display successful delete message
-//				generateODLList();
-//				Toast.makeText(getApplicationContext(), getText(R.string.wellness_entry_deleted), Toast.LENGTH_SHORT).show();
-//				break;
-//			case FRESH_FORM_REQUEST_CODE:
-//				// regenerate ODL list and display successful save message
-//				generateODLList();
-//				Toast.makeText(getApplicationContext(), getText(R.string.wellness_entry_saved), Toast.LENGTH_SHORT).show();
-//				break;
-//			default:
-//				Log.e(TAG, "Error :: Request Code Not Recognized");
-//			}
-//		}
-//		super.onActivityResult(requestCode, resultCode, data);
-//	}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {		
+		if(resultCode == Activity.RESULT_OK) {
+			switch(requestCode) {
+			case EDITABLE_REQUEST_CODE:
+				// regenerate ODL list and display successful delete message
+				generateODLList();
+				Toast.makeText(getActivity().getApplicationContext(), getText(R.string.wellness_entry_deleted), Toast.LENGTH_SHORT).show();
+				break;
+			case FRESH_FORM_REQUEST_CODE:
+				// regenerate ODL list and display successful save message
+				generateODLList();
+				Toast.makeText(getActivity().getApplicationContext(), getText(R.string.wellness_entry_saved), Toast.LENGTH_SHORT).show();
+				break;
+			default:
+				Log.e(TAG, "Error :: Request Code Not Recognized");
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
 }

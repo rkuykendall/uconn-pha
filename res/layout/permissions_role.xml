@@ -18,10 +18,12 @@
         android:id="@+id/wellness"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/wellness_read"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/role"
-        android:layout_toLeftOf="@+id/wellness_read"
-        android:padding="8dip"
+        android:layout_toLeftOf="@id/wellness_read"
+        android:paddingLeft="8dip"
+        android:paddingTop="10dip"
         android:text="@string/wellness_diary"
         android:textSize="16dp" >
     </TextView>
@@ -53,10 +55,12 @@
         android:id="@+id/medications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/medications_read"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/wellness"
-        android:layout_toLeftOf="@+id/medications_read"
-        android:padding="8dip"
+        android:layout_toLeftOf="@id/medications_read"
+        android:paddingLeft="8dip"
+        android:paddingTop="10dip"
         android:text="@string/medications"
         android:textSize="16dp" >
     </TextView>
@@ -87,10 +91,12 @@
         android:id="@+id/allergies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/allergies_read"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/medications"
-        android:layout_toLeftOf="@+id/allergies_read"
-        android:padding="8dip"
+        android:layout_toLeftOf="@id/allergies_read"
+        android:paddingLeft="8dip"
+        android:paddingTop="10dip"
         android:text="@string/allergies"
         android:textSize="16dp" >
     </TextView>
